@@ -1,0 +1,34 @@
+.tarjeta {
+    background: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.cabecera {
+    background-color: #192B40;
+    color: #fefefe;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 10px;
+}
+
+.titulo {
+    margin: 0;
+}
+
+.cuerpo {
+    padding: 15px;
+}
+
+.detalle {
+    text-align: left;
+}
+
+.nombres,
+.rol {
+    margin: 5px 0;
+}
