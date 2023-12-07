@@ -8,6 +8,7 @@ import { AddEmpleadoComponent } from './componentes/Empleado/add-empleado/add-em
 import { EditEmpleadoComponent } from './componentes/Empleado/edit-empleado/edit-empleado.component';
 import { EmpleadoListComponent } from './componentes/Empleado/empleado-list/empleado-list.component';
 
+
 @NgModule({
     declarations:[
         AppComponent,

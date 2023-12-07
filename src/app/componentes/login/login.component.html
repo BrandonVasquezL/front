@@ -1,20 +1,28 @@
 <div class="login-box">
-    <h2>Inicio de sesion</h2>
-    <form>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <h2>Inicio de sesión</h2>
+    <form (ngSubmit)="login()">
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="nombre" required >
         <label>Nombre</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="">
+        <input type="password" name="contrasena" required>
         <label>Contraseña</label>
       </div>
-      <a href="#">
+      <button class="a">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         Iniciar
-      </a>
+      </button>
+      <div class="social-icons">
+        <a class="fa fa-facebook-square" id="facebook" href="https://www.facebook.com/"></a>
+        <a class="fa fa-twitter-square" id="twitter" href="https://twitter.com/"></a>
+        <a class="fa fa-instagram" id="instagram" href="https://www.instagram.com/"></a>
+      </div>
     </form>
-  </div>
+    <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
+  <div *ngIf="mensajeExito" class="success-message">{{ mensajeExito }}</div>  
+</div>
