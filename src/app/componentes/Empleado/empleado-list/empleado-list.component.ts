@@ -4,8 +4,6 @@ import { EmpleadoService } from 'src/app/service/empleado.service';
 
 @Component({
   selector: 'app-empleado-list',
-  //standalone: true,
-  //imports: [CommonModule],
   templateUrl: './empleado-list.component.html',
   styleUrl: './empleado-list.component.css'
 })

@@ -1,6 +1,7 @@
 export interface Empleado{
-    idEmpleado: BigInt,
+    idEmpleado: 0,
     nombre: String,
     contrasena: String,
-    rol: String
+    rol: String,
+    idRol: 0
 }

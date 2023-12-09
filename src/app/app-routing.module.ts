@@ -15,18 +15,18 @@ const routes: Routes = [
     },
 
     {
-      path:'empleados2',
+      path:'login/empleados2',
       component: EmpleadoList2Component
     },
 
     {
-      path:'empleado/edit/:id',
+      path:'login/empleados2/edit/:id',
       component: EditEmpleadoComponent
   
     },
   
     {
-      path:'empleado/add',
+      path:'login/empleados2/add',
       component: AddEmpleadoComponent
     },
     {

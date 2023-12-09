@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+// login.component.ts
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Empleado } from 'src/app/models/empleado';
 import { LoginService } from 'src/app/service/login.service';
-
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,13 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  public myForm!: FormGroup;
   empleado: Empleado = {
-    idEmpleado: BigInt(0),
+    idEmpleado: 0,
     nombre: '',
     contrasena: '',
-    rol: ''
+    rol: '',
+    idRol: 0
   };
 
   mensajeError: string | null = null;

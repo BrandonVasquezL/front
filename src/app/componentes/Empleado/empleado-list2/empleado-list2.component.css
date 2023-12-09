@@ -36,3 +36,11 @@
 .rol {
     margin: 5px 0;
 }
+.btn-warning{
+    margin-right: 50px;
+}
+.btn-success {
+    display: block;
+    margin: auto;
+  }
+  
