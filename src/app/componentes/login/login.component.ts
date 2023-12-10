@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Empleado } from 'src/app/models/empleado';
 import { LoginService } from 'src/app/service/login.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/AuthService';
 
 @Component({
   selector: 'app-login',
@@ -19,25 +21,29 @@ export class LoginComponent {
     idRol: 0
   };
 
-  mensajeError: string | null = null;
-  mensajeExito: string | null = null;
-
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   login() {
-    this.mensajeError = null;
-    this.mensajeExito = null;
-
-    this.loginService.LoginEmpleado(this.empleado).subscribe(
+    this.loginService.loginEmpleado(this.empleado).subscribe(
       response => {
-        console.log('Éxito:', response);
-        this.mensajeExito = 'Inicio de sesión exitoso';
-        // Realizar acciones después de un inicio de sesión exitoso, como redirigir a otra página.
+        if (response.message === 'Bienvenido') {
+          // Almacena el token y establece el estado de autenticación
+          this.authService.login(response.token);
+
+          // Otras acciones después del inicio de sesión exitoso, como redirigir a otra página
+          window.confirm(`Bienvenido ${this.empleado.nombre}`);
+          this.router.navigate(['/login/empleados2']);
+        } else {
+          console.error('Error:', response);
+          window.confirm("Error en nombre o contraseña");
+        }
       },
       error => {
         console.error('Error:', error);
-        this.mensajeError = 'Nombre de usuario o contraseña incorrectos';
-        // Mostrar un mensaje de error al usuario o realizar otras acciones según tus necesidades.
       }
     );
   }

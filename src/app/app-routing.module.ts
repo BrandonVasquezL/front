@@ -6,6 +6,7 @@ import { EmpleadoListComponent } from './componentes/Empleado/empleado-list/empl
 import { EmpleadoList2Component } from './componentes/Empleado/empleado-list2/empleado-list2.component';
 import { LoginComponent } from './componentes/login/login.component'
 import { NosotrosComponent } from './componentes/nosotros/nosotros.component';
+import { AuthGuard } from './service/auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
 
     {
       path:'login/empleados2',
-      component: EmpleadoList2Component
+      component: EmpleadoList2Component,
+      canActivate: [AuthGuard]
     },
 
     {
@@ -36,7 +38,11 @@ const routes: Routes = [
     {
       path: 'nosotros',
       component: NosotrosComponent
-    }
+    },
+    { path: '', 
+    redirectTo: '/login', 
+    pathMatch: 'full' 
+  },
   ];
   @NgModule({
     imports: [RouterModule.forRoot(routes)],

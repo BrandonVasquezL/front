@@ -2,6 +2,7 @@
     <div *ngIf="empleados && empleados.length > 0">
         <h1 class="titulo2">CRUD Empleados </h1>
         <button class="btn btn-success" [routerLink]="['/login/empleados2/add']">Agregar Empleado</button>
+        <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
         <div class="row">
             <div class="d-flex flex-wrap">
                 <div class="tarjeta" *ngFor="let empleado of empleados">

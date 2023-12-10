@@ -3,11 +3,11 @@
     <h2>Inicio de sesión</h2>
     <form (ngSubmit)="login()">
       <div class="user-box">
-        <input type="text" name="nombre" required >
+        <input type="text" name="nombre" [(ngModel)]="empleado.nombre" required >
         <label>Nombre</label>
       </div>
       <div class="user-box">
-        <input type="password" name="contrasena" required>
+        <input type="password" name="contrasena" [(ngModel)]="empleado.contrasena" required>
         <label>Contraseña</label>
       </div>
       <button class="a">
@@ -23,6 +23,4 @@
         <a class="fa fa-instagram" id="instagram" href="https://www.instagram.com/"></a>
       </div>
     </form>
-    <div *ngIf="mensajeError" class="error-message">{{ mensajeError }}</div>
-  <div *ngIf="mensajeExito" class="success-message">{{ mensajeExito }}</div>  
 </div>
