@@ -21,19 +21,21 @@ export class AddEmpleadoComponent {
     constructor(private empleadoServicio: EmpleadoService, private router: Router) {}
 
     agregarEmpleado(): void {
-      this.empleadoServicio.AddEmpleado(this.nuevoEmpleado)
-          .subscribe(
+        if (this.nuevoEmpleado.nombre && this.nuevoEmpleado.contrasena && this.nuevoEmpleado.idRol) {
+          this.empleadoServicio.AddEmpleado(this.nuevoEmpleado)
+            .subscribe(
               (empleadoAgregado) => {
-                  console.log('Empleado agregado:', empleadoAgregado);
-                  window.confirm(`Empleado agregado con éxito`);
-                  
-                  // Redirige a la página 'empleados2'
-                  this.router.navigate(['/login/empleados2']);
+                console.log('Empleado agregado:', empleadoAgregado);
+                window.confirm(`Empleado agregado con éxito`);
+                this.router.navigate(['/login/empleados2']);
               },
               (error) => {
-                  console.error('Error al agregar empleado:', error);
-                  window.confirm(`Error al agregar al empleado`);
+                console.error('Error al agregar empleado:', error);
+                window.confirm(`Error al agregar al empleado`);
               }
-          );
-    }
-}
+            );
+        } else {
+          window.confirm('Por favor, completa todos los campos antes de enviar la solicitud.');
+        }
+      }
+  }

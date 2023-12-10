@@ -1,1 +1,31 @@
-<p>edit-empleado works!</p>
+<div> 
+    <h1 class="titulo2">Editar Empleado</h1>
+    <div class="login-box">
+      <h2>Editar</h2>
+      <form (submit)="editarEmpleado()" #addEmpleadoForm="ngForm">
+        <div class="user-box">
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="empleado.nombre" required>
+          <label>Nombre</label>
+        </div>
+        <div class="user-box">
+          <input type="text" id="contrasena" name="contrasena" [(ngModel)]="empleado.contrasena" required>
+          <label>Contraseña</label>
+        </div>
+        <select id="rol" name="rol" class="form-control" [(ngModel)]="empleado.idRol" required>
+          <option disabled selected>Selecciona Rol</option>
+          <option value="1">Recursos Humanos</option>
+          <option value="2">Finanzas</option>
+          <option value="3">Informatica</option>
+          <option value="4">Directivo</option>
+        </select>
+        <button type="submit" class="a">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          editar
+        </button>
+      </form>
+    </div>
+  </div>
+  

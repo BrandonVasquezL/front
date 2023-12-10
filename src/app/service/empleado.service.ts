@@ -22,7 +22,7 @@ export class EmpleadoService {
 
   AddEmpleado(addEmpleadoRequest: Empleado): Observable<Empleado>{
 
-    return this.http.post<Empleado>(this.baseApiUrl + "/api/Estudiantes", addEmpleadoRequest);
+    return this.http.post<Empleado>(this.baseApiUrl + "/api/empleadoC", addEmpleadoRequest);
   }
 
   GetEmpleado(id: string): Observable<Empleado>{
