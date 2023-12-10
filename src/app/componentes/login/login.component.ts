@@ -31,10 +31,7 @@ export class LoginComponent {
     this.loginService.loginEmpleado(this.empleado).subscribe(
       response => {
         if (response.message === 'Bienvenido') {
-          // Almacena el token y establece el estado de autenticación
           this.authService.login(response.token);
-
-          // Otras acciones después del inicio de sesión exitoso, como redirigir a otra página
           window.confirm(`Bienvenido ${this.empleado.nombre}`);
           this.router.navigate(['/login/empleados2']);
         } else {

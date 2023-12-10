@@ -20,7 +20,6 @@ export class EmpleadoList2Component implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Verificar si el usuario está autenticado antes de cargar los empleados
     if (this.authService.isAuthenticatedUser()) {
       this.cargarEmpleados();
     }
@@ -65,9 +64,7 @@ export class EmpleadoList2Component implements OnInit {
     });
   }
   cerrarSesion(): void {
-    // Llama al método de cierre de sesión en AuthService
     this.authService.logout();
-    // Redirige al usuario a la página de inicio de sesión
     this.router.navigate(['/login']);
   }
 }

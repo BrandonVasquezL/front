@@ -23,13 +23,14 @@ const routes: Routes = [
 
     {
       path:'login/empleados2/edit/:id',
-      component: EditEmpleadoComponent
-  
+      component: EditEmpleadoComponent,
+      canActivate: [AuthGuard]
     },
   
     {
       path:'login/empleados2/add',
-      component: AddEmpleadoComponent
+      component: AddEmpleadoComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'login',
@@ -39,10 +40,6 @@ const routes: Routes = [
       path: 'nosotros',
       component: NosotrosComponent
     },
-    { path: '', 
-    redirectTo: '/login', 
-    pathMatch: 'full' 
-  },
   ];
   @NgModule({
     imports: [RouterModule.forRoot(routes)],
