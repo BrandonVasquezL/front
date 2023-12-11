@@ -5,6 +5,7 @@ import { Empleado } from 'src/app/models/empleado';
 import { LoginService } from 'src/app/service/login.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/AuthService';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -21,13 +22,17 @@ export class LoginComponent {
     idRol: 0
   };
 
+  mensajeError: string | null = null;
+
   constructor(
     private loginService: LoginService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   login() {
+    this.mensajeError = null;  // Reiniciar el mensaje de error
+  
     this.loginService.loginEmpleado(this.empleado).subscribe(
       response => {
         if (response.message === 'Bienvenido') {
@@ -36,12 +41,22 @@ export class LoginComponent {
           this.router.navigate(['/login/empleados2']);
         } else {
           console.error('Error:', response);
-          window.confirm("Error en nombre o contraseña");
+  
+          if (response.message === 'Acceso no autorizado. El usuario no tiene el rol necesario.') {
+            window.confirm('Acceso no autorizado. El usuario no tiene el rol necesario.');
+          } else {
+            window.confirm('Error en nombre o contraseña');
+          }
         }
-      },
-      error => {
+      }, error => {
         console.error('Error:', error);
+        if (error instanceof HttpErrorResponse) {
+          window.confirm('Acceso no autorizado. El usuario no tiene el rol necesario.');
+        } else {
+          window.confirm('Acceso no autorizado. El usuario no tiene el rol necesario.');
+        }
       }
     );
   }
+  
 }
